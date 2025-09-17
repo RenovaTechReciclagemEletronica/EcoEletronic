@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoEletrônic - Onde o fim de um ciclo gera novos começos</title>
+<style>
+    :root {
+        --verde-claro: #a8e6cf;
+        --verde-medio: #66bb6a;
+        --verde-escuro: #2e7d32;
+        --branco: #ffffff;
+        --cinza-claro: #f4f4f4;
+        --gradiente-verde: linear-gradient(135deg, #a8e6cf, #66bb6a);
+    }
+
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior:smooth;}
+    body {font-family:'Segoe UI', sans-serif; background-color:var(--cinza-claro); color:#333; line-height:1.6;}
+
+    /* NAVBAR */
+    nav {
+        background-color: var(--verde-escuro);
+        color:white;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px 30px;
+        position:fixed;
+        width:100%;
+        top:0;
+        z-index:1000;
+        box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+    nav .logo {font-size:24px; font-weight:bold;}
+    nav ul {list-style:none; display:flex; gap:20px;}
+    nav ul li a {color:white; text-decoration:none; font-weight:500;}
+    nav ul li a:hover {text-decoration:underline;}
+    nav .menu-toggle {display:none; font-size:24px; cursor:pointer;}
+
+    /* BANNER ANIMADO */
+    .banner {
+        height:100vh;
+        background: url('logotipo2.png') no-repeat center center/cover;
+        position:relative;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        margin-top:70px;
+        overflow:hidden;
+    }
+    .banner::before {
+        content:'';
+        position:absolute;
+        top:0; left:0; width:100%; height:100%;
+        background: rgba(0, 80, 0, 0.5);
+        animation: pulseOverlay 6s ease-in-out infinite alternate;
+        z-index:1;
+    }
+    @keyframes pulseOverlay {
+        0% {background: rgba(0,80,0,0.45);}
+        100% {background: rgba(0,80,0,0.6);}
+    }
+    .banner div {
+        position:relative; z-index:2;
+        animation: fadeZoom 2s ease forwards;
+    }
+    @keyframes fadeZoom {
+        0% {opacity:0; transform: scale(0.9);}
+        100% {opacity:1; transform: scale(1);}
+    }
+    .banner h1 {
+        font-size:3em;
+        margin-bottom:10px;
+        color:white;
+        text-shadow:2px 2px 8px rgba(0,0,0,0.6);
+    }
+    .banner p {
+        font-size:1.3em;
+        color:white;
+        text-shadow:1px 1px 6px rgba(0,0,0,0.5);
+    }
+
+    /* SEÇÕES */
+    section {padding:60px 20px; max-width:900px; margin:auto;}
+    section h2 {color:var(--verde-escuro); margin-bottom:20px; font-size:2em; text-align:center;}
+    .servicos ul {
+        list-style:none;
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+        gap:20px;
+    }
+    .servicos li {
+        background: var(--branco);
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        text-align:center;
+        transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+        opacity:0;
+        transform: translateY(30px);
+    }
+    .servicos li.show {
+        opacity:1;
+        transform: translateY(0);
+    }
+    .servicos li:hover {
+        transform: translateY(-10px);
+        box-shadow:0 8px 20px rgba(0,0,0,0.2);
+        background: var(--gradiente-verde);
+        color:white;
+    }
+
+    /* FORMULÁRIO DE CONTATO */
+    .contato form {
+        background: var(--branco);
+        padding:30px;
+        border-radius:12px;
+        box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        display:grid;
+        gap:15px;
+    }
+    .contato input, .contato textarea {
+        padding:12px;
+        border:1px solid #ccc;
+        border-radius:8px;
+        font-size:16px;
+    }
+    .contato button {
+        background: var(--gradiente-verde);
+        color:white;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        transition: background 0.4s ease, transform 0.3s ease;
+    }
+    .contato button:hover {
+        background: var(--verde-escuro);
+        transform: scale(1.05);
+    }
+
+    /* RODAPÉ */
+    footer {
+        background-color: var(--verde-escuro);
+        color:white;
+        text-align:center;
+        padding:20px;
+        margin-top:40px;
+    }
+    footer a {color:white; text-decoration:underline;}
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            display: none;
+            background-color: var(--verde-escuro);
+            position: absolute;
+            top:60px; right:0; width:100%;
+            text-align:right;
+            padding:10px 20px;
+        }
+        nav ul.active {display:flex;}
+        nav .menu-toggle {display:block;}
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">EcoEletrônic</div>
+    <div class="menu-toggle">☰</div>
+    <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+</nav>
+
+<section class="banner">
+    <div>
+        <h1>EcoEletrônic</h1>
+        <p>• Onde o fim de um ciclo gera novos começos.</p>
+    </div>
+</section>
+
+<section id="sobre">
+    <h2>Quem Somos</h2>
+    <p>A <strong>EcoEletrônic</strong> é especializada em coleta, triagem e reciclagem de resíduos eletrônicos. Trabalhamos para proteger o meio ambiente e reduzir os impactos causados pelo descarte incorreto de equipamentos eletrônicos.</p>
+</section>
+
+<section id="servicos" class="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+        <li>Coleta de lixo eletrônico em domicílio e empresas</li>
+        <li>Descarte seguro de computadores, celulares, televisores e baterias</li>
+        <li>Reciclagem de componentes eletrônicos com certificação</li>
+        <li>Educação ambiental e palestras sobre sustentabilidade</li>
+    </ul>
+</section>
+
+<section id="contato" class="contato">
+    <h2>Fale Conosco</h2>
+    <form id="contatoForm">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+        <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 EcoEletrônic. Todos os direitos reservados.</p>
+    <p>Email: <a href="mailto:contato@ecoeletronic.com.br">contato@ecoeletronic.com.br</a></p>
+</footer>
+
+<script>
+    // MENU MOBILE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => navUl.classList.toggle('active'));
+
+    // FORMULÁRIO COM ALERTA
+    const form = document.getElementById('contatoForm');
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
+        form.reset();
+    });
+
+    // SCROLL REVEAL SERVIÇOS
+    const servicosItems = document.querySelectorAll('.servicos li');
+    const revealServicos = () => {
+        const windowBottom = window.innerHeight + window.scrollY;
+        servicosItems.forEach(item => {
+            if (item.offsetTop + 100 < windowBottom) {
+                item.classList.add('show');
+            }
+        });
+    };
+    window.addEventListener('scroll', revealServicos);
+    window.addEventListener('load', revealServicos);
+</script>
+
+</body>
+</html>
