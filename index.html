@@ -38,21 +38,25 @@
     nav ul li a:hover {text-decoration:underline;}
     nav .menu-toggle {display:none; font-size:24px; cursor:pointer;}
 
-    /* BANNER COM VÍDEO */
+    /* BANNER COM VÍDEO 1920x1080 */
     .banner {
         position: relative;
-        height: 100vh;
         width: 100%;
+        height: calc(100vh - 70px); /* subtraindo altura do menu */
         overflow: hidden;
+        margin-top: 70px; /* evita sobreposição com o nav */
     }
 
     .banner-video {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: auto;       /* largura automática */
+        height: 100%;      /* ocupa altura total */
+        min-width: 100%;   /* garante cobertura horizontal */
+        min-height: 100%;  /* garante cobertura vertical */
+        object-fit: cover; /* cobre toda a área sem distorcer */
+        object-position: center top; /* mantém foco do vídeo visível */
         transform: translate(-50%, -50%);
     }
 
@@ -139,6 +143,9 @@
         }
         nav ul.active {display:flex;}
         nav .menu-toggle {display:block;}
+        .banner {
+            height: calc(60vh); /* menor altura para mobile */
+        }
     }
 </style>
 </head>
