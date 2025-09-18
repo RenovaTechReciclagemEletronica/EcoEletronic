@@ -47,18 +47,16 @@
         margin-top: 70px; /* evita sobreposição com o nav */
     }
 
-    .banner-video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: auto;       /* largura automática */
-        height: 100%;      /* ocupa altura total */
-        min-width: 100%;   /* garante cobertura horizontal */
-        min-height: 100%;  /* garante cobertura vertical */
-        object-fit: cover; /* cobre toda a área sem distorcer */
-        object-position: center top; /* mantém foco do vídeo visível */
-        transform: translate(-50%, -50%);
-    }
+  .banner-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mostra o vídeo inteiro */
+    background: black;   /* cor de fundo para preencher faixas */
+    transform: translate(-50%, -50%);
+}
 
     /* SEÇÕES */
     section {padding:60px 20px; max-width:900px; margin:auto;}
